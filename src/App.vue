@@ -33,6 +33,7 @@ import LayoutHeader from "@/components/header/index.vue"
   height: 100%;
   padding: 30px;
   background: #fa998d;
-  border-radius: 50px;
+  /* border-radius: 50px; */
+  box-sizing: border-box;
 }
 </style>

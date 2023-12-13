@@ -1,31 +1,41 @@
 <template>
   <div class="home_wrapper">
     <el-card class="box-card">
-      <!-- <template #header>
-        <div class="card-header">
-          <p class="AI_avatar">
-            <img src="@/assets/svg/chat.svg" alt="">
-          </p>
-          <span>你好，欢迎来到“AI”做课平台，输入一些基本信息，开启你的AI做课之旅吧！</span>
-        </div>
-      </template> -->
-      <div class="card-header">
+      <div class="ai_talk">
         <p class="AI_avatar">
           <img src="@/assets/svg/chat.svg" alt="">
         </p>
         <span>你好，欢迎来到“AI”做课平台，输入一些基本信息，开启你的AI做课之旅吧！</span>
       </div>
-      <div class="card-header AI_content">
-          <p class="AI_avatar">
-            <img src="@/assets/svg/chat.svg" alt="">
-          </p>
-          <ul class="AI_content_ul">
-            <li v-for="o in 4" :key="o" class="text_item">
-              <p>您的课程主题是？</p> <el-input v-model="input1" placeholder="Please input" />
-            </li>
-          </ul>
-        </div>
-      <template #footer>Footer content</template>
+      <div class="ai_talk AI_content">
+        <p class="AI_avatar">
+          <img src="@/assets/svg/chat.svg" alt="">
+        </p>
+        <ul class="AI_content_ul">
+          <li class="text_item">
+            <p>您的课程主题是？</p> <el-input v-model="input1" placeholder="如：“AI”做课使用实操" />
+          </li>
+          <li class="text_item">
+            <p>您的课程对象是？</p> <el-input v-model="input2" placeholder="建议描述方式：在什么水平/具备什么经验的，什么岗位/群体，示例：入司3年内的证券公司财富顾问" />
+          </li>
+          <li class="text_item">
+            <p>您的课程目标是？</p> <el-input v-model="input3" placeholder="当学员学完课程后，能够发生哪些知识/态度/技能改变" />
+          </li>
+          <li class="text_item">
+            <p>您预计的课程时长</p> <el-input v-model="input4" placeholder="建议1小时内，学员学习体验更好" />
+          </li>
+          <li class="text_item">
+            <p>其他补充说明</p> <el-input v-model="input5" placeholder="比如您希望包含的主要内容、案例等，您补充的细节越多，AI输出的内容越精准" />
+          </li>
+          <li class="text_item">
+            <p>附件上传</p> <el-input v-model="input6" placeholder="上传课程相关文档内容，或附上内容网址链接" />
+          </li>
+          <li class="text_item">
+            <button>生成课程大纲</button>
+          </li>
+          
+        </ul>
+      </div>
     </el-card>
     
   </div>
@@ -33,13 +43,19 @@
 
 <script setup>
 import { ref } from 'vue'
-const input1 = ref('如：“AI”做课使用实操')
+const input1 = ref('')
+const input2 = ref('')
+const input3 = ref('')
+const input4 = ref('')
+const input5 = ref('')
+const input6 = ref('')
 </script>
 
-<style>
-.card-header {
+<style scoped>
+.ai_talk {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 .AI_avatar {
   min-width: 40px;
@@ -60,14 +76,30 @@ const input1 = ref('如：“AI”做课使用实操')
   list-style: none;
 }
 .text_item {
-  width: 50%;
-  line-height: 30px;
+  width: 80%;
+  line-height: 40px;
   list-style: none;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .text_item p {
-  min-width: 50%;
+  width: 45%;
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 30px;
+  color: #fff;
+  background: rgb(91,155,213);
+}
+.text_item>button {
+  width: 220px;
+  line-height: 40px;
+  color: #fff;
+  background: tomato;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 </style>

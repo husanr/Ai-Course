@@ -1,7 +1,5 @@
 <template>
   <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-    <el-radio-button :label="false">展开</el-radio-button>
-    <el-radio-button :label="true">折叠</el-radio-button>
   </el-radio-group>
   <el-menu
     default-active="1"
@@ -25,7 +23,7 @@
   </el-menu>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
 import {
   Document,
@@ -34,11 +32,11 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 
-const isCollapse = ref(true)
-const handleOpen = (key: string, keyPath: string[]) => {
+const isCollapse = ref(false)
+const handleOpen = (key, keyPath) => {
   console.log(key, keyPath)
 }
-const handleClose = (key: string, keyPath: string[]) => {
+const handleClose = (key, keyPath) => {
   console.log(key, keyPath)
 }
 </script>
