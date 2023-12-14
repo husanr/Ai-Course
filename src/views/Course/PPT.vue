@@ -14,18 +14,16 @@
       </div>
       <div class="outline_content">
         <h3 class="outline_head">PPT</h3>
-        <article>
-          <p class="content_tit">第一章：课题1</p>
-          <p>第一节：节目1</p>
-          <p>第二节：节目2</p>
-          <p>第三节：节目3</p>
-        </article>
-        <article>
-          <p class="content_tit">第二章：课题2</p>
-          <p>第一节：节目1</p>
-          <p>第二节：节目2</p>
-          <p>第三节：节目3</p>
-        </article>
+        <div class="ppt_wrap">
+          <div class="demo-image__lazy">
+            <el-image 
+                v-for="url in urls" 
+                :key="url" 
+                :src="url" 
+                :preview-src-list="urls"
+                lazy />
+          </div>
+        </div>
         
       </div>
     </div>
@@ -36,8 +34,21 @@
 import {ref} from "vue"
 import { store } from "@/store"
 import router from "@/router";
+import p1 from "@/assets/images/p1.jpeg"//引入本地图片
 // const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
 const textarea = ref(store.outlineText)
+
+const urls = [
+  'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+  'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+  'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
+  'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
+  'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
+  'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
+  p1
+]
+
 const loading = ref(false)
 const next = () => {
   loading.value = true
@@ -96,5 +107,18 @@ article>p:not(.content_tit) {
 .content_con {
     width: 30%;
     margin-right: 40px;
+}
+
+.demo-image__lazy {
+  height: 400px;
+  overflow-y: auto;
+}
+.demo-image__lazy .el-image {
+  display: block;
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+.demo-image__lazy .el-image:last-child {
+  margin-bottom: 0;
 }
 </style>

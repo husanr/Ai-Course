@@ -30,7 +30,7 @@
       <div class="video_wrapper">
         <h3 class="outline_head">视频</h3>
         <div class="video_box">
-          <video src="../"></video>
+          <video src="@/assets/images/v1.mp4" controls></video>
         </div>
       </div>
       <div class="tag_wrapper">
@@ -160,6 +160,10 @@ article>p:not(.content_tit) {
 
 .video_wrapper {
   flex: 1;
+}
+.video_box video{
+  width: 90%;
+  border-radius: 20px;
 }
 
 .tag_tit {
