@@ -2,12 +2,13 @@
     <div class="course_wrapper">
         <div class="link_btns">
             <ul>
-                <li><RouterLink to="/course/outline">课程大纲</RouterLink></li>
-                <li><RouterLink to="/course/content">课程内容</RouterLink></li>
-                <li><RouterLink to="/course/ppt">课程PPT</RouterLink></li>
-                <li><RouterLink to="/course/lecture">课程讲稿</RouterLink></li>
-                <li><RouterLink to="/course/video">课程视频</RouterLink></li>
-                <li><RouterLink to="/course/else">其他</RouterLink></li>
+                <li v-for="(item, index) in tabs" 
+                    :key="index" 
+                    :class="activeIndex === index ? 'active_li' : ''"
+                    @click="handleClickTab(item,index)"
+                  >
+                  <p :to="item.path">{{item.name}}</p>
+                </li>
             </ul>
         </div>
 
@@ -18,7 +19,41 @@
 </template>
 
 <script setup>
+import {ref} from "vue"
+import router from "../../router";
+const tabs = [
+  {
+    path: "/course/outline",
+    name: "课程大纲"
+  },
+  {
+    path: "/course/content",
+    name: "课程内容"
+  },
+  {
+    path: "/course/ppt",
+    name: "课程PPT"
+  },
+  {
+    path: "/course/lecture",
+    name: "课程讲稿"
+  },
+  {
+    path: "/course/video",
+    name: "课程视频"
+  },
+  {
+    path: "/course/else",
+    name: "其他"
+  }
+]
 
+const activeIndex = ref(0)
+const handleClickTab = (item, ind) => {
+    console.log(ind);
+    activeIndex.value = ind
+    router.push(item.path)
+}
 </script>
 
 <style scoped>
@@ -33,6 +68,10 @@
     padding: 10px 30px;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+.link_btns ul .active_li {
+  color: #fff;
+  background: #efaf39;
 }
 .box-card {
     flex: 1;

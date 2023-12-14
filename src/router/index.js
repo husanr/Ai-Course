@@ -16,6 +16,7 @@ const router = createRouter({
     {
       path: '/course',
       name: 'course',
+      redirect: '/course/outline',
       component: () => import('../views/Course/index.vue'),
       children: [
         {

@@ -1,6 +1,6 @@
 <template>
   <div class="home_wrapper">
-    <el-card class="box-card">
+    <el-card class="box-card" v-loading="loading">
       <div class="ai_talk">
         <p class="AI_avatar">
           <img src="@/assets/svg/chat.svg" alt="">
@@ -31,7 +31,7 @@
             <p>附件上传</p> <el-input v-model="input6" placeholder="上传课程相关文档内容，或附上内容网址链接" />
           </li>
           <li class="text_item">
-            <button>生成课程大纲</button>
+            <button class="submit_btn" @click="handleCreateOutline">生成课程大纲</button>
           </li>
           
         </ul>
@@ -43,12 +43,24 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const loading = ref(false)
 const input1 = ref('')
 const input2 = ref('')
 const input3 = ref('')
 const input4 = ref('')
 const input5 = ref('')
 const input6 = ref('')
+sessionStorage.setItem('isCollapse', false)
+const handleCreateOutline = () => {
+  sessionStorage.setItem('isCollapse', true)
+  loading.value = true
+  // 模拟加载中的状态 2s
+  setTimeout(() => {
+    router.push('/course')
+  }, 2000)
+}
 </script>
 
 <style scoped>
@@ -91,15 +103,5 @@ const input6 = ref('')
   color: #fff;
   background: rgb(91,155,213);
 }
-.text_item>button {
-  width: 220px;
-  line-height: 40px;
-  color: #fff;
-  background: tomato;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 20px;
-}
+
 </style>

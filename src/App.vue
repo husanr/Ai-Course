@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
+      <el-header height="40px">
         <!-- <nav>
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/about">About</RouterLink>
@@ -9,7 +9,7 @@
         <LayoutHeader />
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside :width="asideWidth" :isCollapse="isCollapse">
           <Menu />
         </el-aside>
         <el-container>
@@ -23,9 +23,14 @@
   </div>
 </template>
 <script setup>
+import { ref, computed } from "vue"
 import { RouterLink, RouterView } from 'vue-router'
 import Menu from "@/components/aside/menu.vue"
 import LayoutHeader from "@/components/header/index.vue"
+
+const isCollapse = ref(false)
+const wid = isCollapse.value ? "100px" : "200px"
+const asideWidth = ref(wid)
 </script>
 <style>
 .common-layout {
@@ -36,4 +41,16 @@ import LayoutHeader from "@/components/header/index.vue"
   /* border-radius: 50px; */
   box-sizing: border-box;
 }
+.submit_btn {
+  width: 220px;
+  line-height: 40px;
+  color: #fff;
+  background: tomato;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
 </style>
