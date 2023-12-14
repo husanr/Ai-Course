@@ -9,7 +9,14 @@
     <div class="content_wrapper">
       <div class="content_con">
         <h3 class="outline_head">内容</h3>
-        <el-input v-model="textarea" type="textarea" autosize="true" placeholder="Please input content" />
+        <!-- <el-input 
+              v-model="textarea" 
+              type="textarea" 
+              placeholder="Please input content" /> -->
+        <textarea 
+          v-model="textarea"
+          placeholder="Please input content"
+        ></textarea>
         <button class="submit_btn" @click="next">PPT确认完毕 帮我生成配音讲稿</button>
       </div>
       <div class="outline_content">
@@ -107,6 +114,16 @@ article>p:not(.content_tit) {
 .content_con {
     width: 30%;
     margin-right: 40px;
+}
+.content_con textarea {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  color: #333;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .demo-image__lazy {

@@ -18,13 +18,18 @@
             </div>
             <div class="content_con">
                 <h3 class="outline_head">内容</h3>
-                <el-input
+                <!-- <el-input
                     v-model="textarea"
                     type="textarea"
                     autosize="true"
                     placeholder="Please input content"
                     @input="handleTextInp"
-                />
+                /> -->
+                <textarea 
+                  v-model="textarea"
+                  placeholder="Please input content"
+                  @input="handleTextInp"
+                ></textarea>
             </div>
         </div>
         
@@ -96,6 +101,8 @@ article {
   border-radius: 10px;
   margin-bottom: 20px;
   line-height: 30px;
+  height: 400px;
+  box-sizing: border-box;
 }
 article>p:not(.content_tit) {
   margin-left: 10px;
@@ -104,6 +111,16 @@ article>p:not(.content_tit) {
 .content_con {
     flex: 1;
     margin-left: 40px;
+}
+.content_con textarea {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  color: #333;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .outline_ul {

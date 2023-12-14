@@ -144,6 +144,8 @@ article {
   border-radius: 10px;
   margin-bottom: 20px;
   line-height: 30px;
+  height: 320px;
+  box-sizing: border-box;
 }
 article>p:not(.content_tit) {
   margin-left: 10px;
@@ -162,7 +164,8 @@ article>p:not(.content_tit) {
   flex: 1;
 }
 .video_box video{
-  width: 90%;
+  /* width: 90%; */
+  height: 320px;
   border-radius: 20px;
 }
 

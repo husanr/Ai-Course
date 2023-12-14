@@ -31,13 +31,18 @@
           </article>
         </div>
         <div class="edit_lecture_wrapper" v-show="isEdit">
-          <el-input 
+          <!-- <el-input 
             v-model="textarea" 
             type="textarea" 
             autosize="true" 
             placeholder="Please input content" 
             @input="handleTextInp"
-            />
+            /> -->
+          <textarea 
+            v-model="textarea"
+            placeholder="Please input content"
+            @input="handleTextInp"
+          ></textarea>
           <el-button type="success" @click="handleOver">完成</el-button>
         </div>
       </div>
@@ -146,6 +151,17 @@ article>p:not(.content_tit) {
 
 .edit_lecture_wrapper button{
   margin-top: 20px;
+}
+
+.edit_lecture_wrapper textarea {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  color: #333;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .outline_ul {
