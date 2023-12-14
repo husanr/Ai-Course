@@ -50,5 +50,6 @@
   font-size: 30px;
   text-align: center;
   line-height: 200px;
+  cursor: pointer;
 }
 </style>

@@ -11,16 +11,7 @@
               <h3 class="outline_head">大纲</h3>
               <article>
                 <ul class="outline_ul">
-                  <li class="content_tit">第一章：课题1</li>
-                    <li>第一节：节目1</li>
-                    <li>第二节：节目2</li>
-                    <li>第三节：节目3</li>
-                </ul>
-                <ul class="outline_ul">
-                  <li class="content_tit">第二章：课题2</li>
-                    <li>第一节：节目1</li>
-                    <li>第二节：节目2</li>
-                    <li>第三节：节目3</li>
+                  <li v-for="item in outlineTxtArr" :class="isTit(item) ? 'content_tit' : ''">{{ item }}</li>
                 </ul>
               </article>
               <button class="submit_btn" @click="next">内容确认完毕,帮我生成PPT</button>
@@ -32,6 +23,7 @@
                     type="textarea"
                     autosize="true"
                     placeholder="Please input content"
+                    @input="handleTextInp"
                 />
             </div>
         </div>
@@ -40,10 +32,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { store } from "@/store"
 import router from "@/router";
-const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
+// const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
+const textarea = ref(store.outlineText)
+const outlineTxtArr = computed(() => {
+  return textarea.value.split(/\n\t|\n\n/)
+})
+const isTit = (v) => {
+  // 检查是否是章节标题
+  return v.indexOf("章") >= 0
+}
+const handleTextInp = (e) => {
+  store.outlineText = e
+}
 
 const loading = ref(false)
 const next = () => {

@@ -36,8 +36,8 @@
 import {ref} from "vue"
 import { store } from "@/store"
 import router from "@/router";
-const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
-
+// const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
+const textarea = ref(store.outlineText)
 const loading = ref(false)
 const next = () => {
   loading.value = true
