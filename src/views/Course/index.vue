@@ -31,7 +31,7 @@ const tabs = [
     name: "课程内容"
   },
   {
-    path: "/course/ppt",
+    path: "/course/ppttest",
     name: "课程PPT"
   },
   {

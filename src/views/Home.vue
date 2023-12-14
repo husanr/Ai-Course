@@ -31,7 +31,7 @@
             <p>附件上传</p> <el-input v-model="input6" placeholder="上传课程相关文档内容，或附上内容网址链接" />
           </li>
           <li class="text_item">
-            <button class="submit_btn" @click="handleCreateOutline">生成课程大纲</button>
+            <button class="submit_btn" @click="handleCreateOutline">生成课程大纲 →</button>
           </li>
           
         </ul>
@@ -100,8 +100,9 @@ const handleCreateOutline = () => {
   border-radius: 10px;
   text-align: center;
   margin-right: 30px;
-  color: #fff;
-  background: rgb(91,155,213);
+  color: #000000;
+  background: rgb(232,247,243);
+  border: 1px solid #C6F3E6;
 }
 
 </style>
