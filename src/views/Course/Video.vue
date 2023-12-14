@@ -10,19 +10,20 @@
       <div class="content_con">
         <h3 class="outline_head">讲稿</h3>
         <div class="lecture_text" @click="handleClickLecture" v-show="!isEdit">
-          <p class="content_tit">讲稿1</p>
-          <p>&nbsp;&nbsp;第一节：节目1</p>
-          <p>&nbsp;&nbsp;第二节：节目2</p>
-          <p>&nbsp;&nbsp;第三节：节目3</p>
-          <br>
-          <p class="content_tit">讲稿2</p>
-          <p>&nbsp;&nbsp;第一节：节目1</p>
-          <p>&nbsp;&nbsp;第二节：节目2</p>
-          <p>&nbsp;&nbsp;第三节：节目3</p>
+          <article>
+            <ul class="outline_ul">
+              <li v-for="item in lectureTxtArr" :class="isTit(item) ? 'content_tit' : ''">{{ item }}</li>
+            </ul>
+          </article>
           <button class="submit_btn" @click="next">课程制作完毕，点击下载</button>
         </div>
         <div class="edit_lecture_wrapper" v-show="isEdit">
-          <el-input v-model="textarea" type="textarea" autosize="true" placeholder="Please input content" />
+          <el-input 
+              v-model="textarea" 
+              type="textarea" 
+              autosize="true" 
+              placeholder="Please input content" 
+              @input="handleTextInp"/>
           <el-button type="success" @click="handleOver">完成</el-button>
         </div>
       </div>
@@ -68,10 +69,21 @@
 </template>
 
 <script setup>
-import {ref} from "vue"
+import { ref, computed } from "vue"
 import { store } from "@/store"
 import router from "@/router";
-const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
+// const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
+const textarea = ref(store.lectureText)
+const lectureTxtArr = computed(() => {
+  return textarea.value.split(/\n\t|\n\n/)
+})
+const isTit = (v) => {
+  // 检查是否是章节标题
+  return v.indexOf("讲稿") >= 0
+}
+const handleTextInp = (e) => {
+  store.lectureText = e
+}
 const isEdit = ref(false)
 
 const handleClickLecture = () => {
@@ -174,7 +186,12 @@ article>p:not(.content_tit) {
   text-align: center;
 }
 
-.tags>span {
-
+.outline_ul {
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.outline_ul>li:not(.content_tit) {
+  margin-left: 20px;
+  list-style-type:circle;
 }
 </style>
