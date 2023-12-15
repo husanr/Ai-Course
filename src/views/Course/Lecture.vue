@@ -139,6 +139,9 @@ article {
   border-radius: 10px;
   margin-bottom: 20px;
   line-height: 30px;
+  height: 400px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 article>p:not(.content_tit) {
   margin-left: 10px;

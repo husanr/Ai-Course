@@ -126,6 +126,7 @@ article {
   line-height: 30px;
   height: 400px;
   box-sizing: border-box;
+  overflow: auto;
 }
 article>p:not(.content_tit) {
   margin-left: 10px;
@@ -133,9 +134,6 @@ article>p:not(.content_tit) {
 
 .content_con {
     flex: 1;
-}
-.edit_wrapper {
-
 }
 .content_con textarea {
   width: 100%;
