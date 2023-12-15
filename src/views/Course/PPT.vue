@@ -15,6 +15,7 @@
               placeholder="Please input content" /> -->
         <textarea 
           v-model="textarea"
+          @input="handleTextInp"
           placeholder="Please input content"
         ></textarea>
         <button class="submit_btn" @click="next">PPT确认完毕 帮我生成配音讲稿</button>
@@ -55,6 +56,10 @@ const urls = [
   'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
   p1
 ]
+
+const handleTextInp = (e) => {
+  store.outlineText = e.target.value
+}
 
 const loading = ref(false)
 const next = () => {
