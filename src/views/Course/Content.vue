@@ -146,10 +146,15 @@ article>p:not(.content_tit) {
   outline: none;
   box-sizing: border-box;
 }
-
+.content_con:hover textarea{
+  color: #37f6a0;
+}
 .outline_ul {
   margin-bottom: 10px;
   padding: 0 10px;
+}
+.outline_ul>li:hover {
+  color: yellow;
 }
 .outline_ul>li:not(.content_tit) {
   margin-left: 20px;
