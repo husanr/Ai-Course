@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 
 export const store = reactive({
   activeIndex: 0,
+  pptSrc: "https://www.kdocs.cn/l/cc6dK4Z9VtoM?from=docs",
   outlineText: "第一章：项目背景（为什么学）\n\n\t第一节：企业培训中课程制作的痛点和需求\n\t第二节：使用AI辅助课程制作的背景和动机\n\n" +
       "第二章：创新方案（是什么、有什么）\n\n\t第一节：什么是“AI做课”辅助课程制作\n\t第二节：“AI做课”有哪些功能\n\n课程大纲生成\n\n课程内容生成\n\n课程PPT生成\n\n课程视频生成\n\n" +
       "其他：试题制作、课程宣传图制作等",

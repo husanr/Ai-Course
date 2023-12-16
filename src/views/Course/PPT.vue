@@ -21,7 +21,7 @@
       </div>
       <div class="outline_content">
         <h3 class="outline_head">PPT</h3>
-        <div class="ppt_wrap">
+        <div class="ppt_wrap" v-loading="pptLoading">
           <!-- <div class="demo-image__lazy">
             <el-image 
                 v-for="url in urls" 
@@ -30,7 +30,7 @@
                 :preview-src-list="urls"
                 lazy />
           </div> -->
-          <iframe src="https://www.kdocs.cn/l/cc6dK4Z9VtoM?from=docs" frameborder="0"></iframe>
+          <iframe ref="pptIframeRef" :src="iframeSrc" frameborder="0"></iframe>
         </div>
         
       </div>
@@ -43,8 +43,12 @@ import {ref} from "vue"
 import { store } from "@/store"
 import router from "@/router";
 import p1 from "@/assets/images/p1.jpeg"//引入本地图片
+const loading = ref(false)
+const pptLoading = ref(false)
 // const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
 const textarea = ref(store.contentText)
+const iframeSrc = ref(store.pptSrc)
+let timer = null
 
 const urls = [
   'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
@@ -59,9 +63,17 @@ const urls = [
 
 const handleTextInp = (e) => {
   store.contentText = e.target.value
+  pptLoading.value = true
+  if(timer)return//防止重复添加定时器
+  timer =  setTimeout(() => {
+    pptLoading.value = false
+    iframeSrc.value = "https://kdocs.cn/l/cre5lWiwYmRv"
+    store.pptSrc = iframeSrc.value 
+    clearTimeout(timer)
+    timer = null
+  }, 2000)
 }
 
-const loading = ref(false)
 const next = () => {
   loading.value = true
   setTimeout(() => {
