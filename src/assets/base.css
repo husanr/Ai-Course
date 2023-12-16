@@ -6,3 +6,28 @@ html,body{
   width: 100%;
   height: 100%;
 }
+ 
+/* 改变滚动条的颜色 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #999 #F5F5F5;
+}
+*::-webkit-scrollbar {
+    background-color: #F5F5F5;
+    width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 5px;
+}
+ 
+/* 改变滚动条被悬停时的颜色 */
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+ 
+/* 改变滚动条的轨道宽度和颜色 */
+*::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}

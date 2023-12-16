@@ -9,7 +9,7 @@
         <LayoutHeader />
       </el-header>
       <el-container>
-        <el-aside :width="asideWidth" :isCollapse="isCollapse">
+        <el-aside width="120px" :isCollapse="isCollapse">
           <Menu />
         </el-aside>
         <el-container>
@@ -29,7 +29,7 @@ import Menu from "@/components/aside/menu.vue"
 import LayoutHeader from "@/components/header/index.vue"
 
 const isCollapse = ref(false)
-const wid = isCollapse.value ? "100px" : "200px"
+const wid = isCollapse.value ? "100px" : "120px"
 const asideWidth = ref(wid)
 </script>
 <style>
@@ -60,6 +60,9 @@ const asideWidth = ref(wid)
   /* display: flex;
   justify-content: center;
   align-items: center; */
+}
+.el-aside{
+  overflow: hidden;
 }
 
 </style>

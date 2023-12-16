@@ -10,14 +10,15 @@
       <div class="outline_content">
         <h3 class="outline_head">PPT</h3>
         <div class="ppt_wrap">
-          <div class="demo-image__lazy">
+          <!-- <div class="demo-image__lazy">
             <el-image 
                 v-for="url in urls" 
                 :key="url" 
                 :src="url" 
                 :preview-src-list="urls"
                 lazy />
-          </div>
+          </div> -->
+          <iframe src="https://www.kdocs.cn/l/cc6dK4Z9VtoM?from=docs" frameborder="0"></iframe>
         </div>
         <button class="submit_btn" @click="next">讲稿确认完毕 请生成视频</button>
       </div>
@@ -123,7 +124,7 @@ const next = () => {
   padding-left: 40px;
 }
 .outline_content {
-  width: 40%;
+  width: 60%;
 }
 .outline_head {
   display: inline-block;
@@ -187,5 +188,14 @@ article>p:not(.content_tit) {
 }
 .demo-image__lazy .el-image:last-child {
   margin-bottom: 0;
+}
+
+.ppt_wrap {
+  width: 100%;
+  height: 400px;
+}
+.ppt_wrap iframe {
+  width: 100%;
+  height: 100%;
 }
 </style>
