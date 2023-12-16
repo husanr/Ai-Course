@@ -71,7 +71,7 @@ const handleTextInp = (e) => {
     store.pptSrc = iframeSrc.value 
     clearTimeout(timer)
     timer = null
-  }, 2000)
+  }, 3000)
 }
 
 const next = () => {
@@ -79,7 +79,7 @@ const next = () => {
   setTimeout(() => {
     store.activeIndex += 1
     router.push('/course/lecture')
-  }, 2000)
+  }, 3000)
 }
 </script>
 
