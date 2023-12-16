@@ -9,15 +9,15 @@
     @close="handleClose"
   >
     <el-menu-item index="1">
-      <el-icon><icon-menu /></el-icon>
+      <el-icon style="color:white;"><icon-menu /></el-icon>
       <template #title><h3>新建课程</h3></template>
     </el-menu-item>
     <el-menu-item index="2">
-      <el-icon><document /></el-icon>
+      <el-icon style="color:white;"><document /></el-icon>
       <template #title><h3>课程中心</h3></template>
     </el-menu-item>
     <el-menu-item index="3">
-      <el-icon><setting /></el-icon>
+      <el-icon style="color:white;"><setting /></el-icon>
       <template #title><h3>素材中心</h3></template>
     </el-menu-item>
   </el-menu>
@@ -32,6 +32,7 @@ import {
   Location,
   Setting,
 } from '@element-plus/icons-vue'
+import router from "@/router"
 
 // const isCollapse = ref(store.collapse)
 const isCollapse = computed(() => {
@@ -43,6 +44,10 @@ const handleOpen = (key, keyPath) => {
 const handleClose = (key, keyPath) => {
   console.log(key, keyPath)
 }
+
+const toHome = () => {
+  router.push('/')
+}
 </script>
 
 <style>
@@ -51,5 +56,10 @@ const handleClose = (key, keyPath) => {
   min-height: 400px;
   background-color:transparent;
   margin-top: 30px
+}
+
+h3 {
+  font-size: 19px;
+  color: #fff
 }
 </style>

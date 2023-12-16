@@ -1,8 +1,8 @@
 <template>
-  <div class="course_video_wrapper" v-loading="loading">
+  <div class="course_video_wrapper" style="height: 690px;" v-loading="loading">
     <div class="ai_talk">
       <p class="AI_avatar">
-        <img src="@/assets/svg/chat.svg" alt="">
+        <img src="@/assets/svg/chat3.png" alt="">
       </p>
       <span>根据内容和PPT，推荐讲稿如下，如需调整，可直接点击直接调整</span>
     </div>
@@ -18,13 +18,13 @@
           <button class="submit_btn" @click="next">课程制作完毕，点击下载</button>
         </div>
         <div class="edit_lecture_wrapper" v-show="isEdit">
-          <!-- <el-input 
+          <!-- <el-input
               v-model="textarea" 
               type="textarea" 
               autosize="true" 
               placeholder="Please input content" 
               @input="handleTextInp"/> -->
-          <textarea 
+          <textarea
               v-model="textarea"
               placeholder="Please input content"
               @input="handleTextInp"
@@ -54,11 +54,28 @@
           <div class="tags_box">
             <div class="tags">
               <p>选择形象</p>
-              <el-button type="info" plain>PS: 多个形象人物</el-button>
+              <el-button type="info" plain @click="imgDialogVisible = true">PS: 多个形象人物</el-button>
             </div>
             <div class="tags">
               <p>上传自定义形象</p>
-              <el-button type="info" plain>PS: 支持自定义形象</el-button>
+<!--              <el-button type="info" plain>PS: 支持自定义形象</el-button>-->
+              <el-upload
+                  v-model:file-list="fileList"
+                  class="upload-demo"
+                  action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                  multiple
+                  :on-preview="handlePreview"
+                  :on-remove="handleRemove"
+                  :before-remove="beforeRemove"
+                  :limit="3"
+                  :on-exceed="handleExceed"
+              >
+                <el-button type="primary">Click to upload</el-button>
+                <template #tip>
+                  <div class="el-upload__tip">
+                  </div>
+                </template>
+              </el-upload>
             </div>
           </div>
         </div>
@@ -71,10 +88,35 @@
       </div>
 
     </div>
+    <el-dialog v-model="imgDialogVisible" title="人物形象" width="15%" center>
+      <div class="demo-type">
+        <el-button>
+          <el-avatar :icon="UserFilled" />
+        </el-button>
+        <el-button>
+          <el-avatar
+              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+          />
+        </el-button>
+        <el-button>
+          <el-avatar>user</el-avatar>
+        </el-button>
+      </div>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="imgDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="imgDialogVisible = false">
+            确定
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup>
+import { UserFilled } from '@element-plus/icons-vue'
+const imgDialogVisible = ref(false)
 const isHidden = ref(true);
 import { ref, computed } from "vue"
 import { store } from "@/store"
@@ -114,6 +156,17 @@ const next = () => {
 </script>
 
 <style scoped>
+.demo-type {
+  display: flex;
+}
+.demo-type > div {
+  flex: 1;
+  text-align: center;
+}
+
+.demo-type > div:not(:last-child) {
+  border-right: 1px solid var(--el-border-color);
+}
 .ai_talk {
   display: flex;
   align-items: center;
@@ -125,13 +178,15 @@ const next = () => {
   height: 40px;
   border-radius: 50%;
   color: #fff;
-  background: rgb(111, 219, 175);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
 }
-
+.AI_avatar img {
+  width: 40px
+}
 .content_wrapper {
   display: flex;
   padding-left: 40px;
@@ -153,7 +208,7 @@ article {
   border-radius: 10px;
   margin-bottom: 20px;
   line-height: 30px;
-  height: 320px;
+  height: 500px;
   box-sizing: border-box;
   overflow: auto;
 }
@@ -172,7 +227,7 @@ article>p:not(.content_tit) {
 
 .edit_lecture_wrapper textarea {
   width: 100%;
-  height: 320px;
+  height: 500px;
   padding: 10px;
   color: #333;
   border: 1px solid #aaa;

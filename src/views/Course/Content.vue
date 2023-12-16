@@ -2,13 +2,14 @@
     <div class="course_content_wrapper" v-loading="loading">
         <div class="ai_talk">
             <p class="AI_avatar">
-            <img src="@/assets/svg/chat.svg" alt="">
+            <img src="@/assets/svg/chat3.png" alt="">
             </p>
             <span>根据课程大纲推荐课程内容如下，如需调整，可直接点击文稿调整</span>
         </div>
         <div class="content_wrapper">
             <div class="outline_content">
               <h3 class="outline_head">大纲</h3>
+              <div><TextTree textType="outline"></TextTree></div>
               <article @click="handleClickEdit" v-show="!isEdit">
                 <ul class="outline_ul">
                   <li v-for="item in outlineTxtArr" :class="isTit(item) ? 'content_tit' : ''">{{ item }}</li>
@@ -16,7 +17,7 @@
               </article>
               <button v-show="!isEdit" class="submit_btn" @click="next" id="generatePPT">内容确认完毕,帮我生成PPT</button>
               <div class="edit_wrapper content_con" v-show="isEdit">
-                <textarea 
+                <textarea
                     v-model="outlineTextarea"
                     @input="handleEditOutline"
                     placeholder="Please input content"
@@ -24,9 +25,9 @@
                 <el-button type="success" @click="handleOver">完成</el-button>
               </div>
             </div>
-            
             <div class="content_con">
                 <h3 class="outline_head">内容</h3>
+                <div><ContentTree textType="content"></ContentTree></div>
                 <div id="output"></div>
                 <!-- <el-input
                     v-model="textarea"
@@ -51,6 +52,8 @@
 import { ref, computed, onMounted } from 'vue'
 import { store } from "@/store"
 import router from "@/router";
+import TextTree from '@/components/content/TextTree.vue'
+ import ContentTree from '@/components/content/ContentTree.vue'
 // const textarea = ref('第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3')
 const outlineTextarea = ref(store.outlineText)
 const textarea = ref(store.contentText)
@@ -127,11 +130,14 @@ onMounted(() => {
   height: 40px;
   border-radius: 50%;
   color: #fff;
-  background: rgb(111, 219, 175);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+}
+.AI_avatar img {
+  width: 40px
 }
 .content_wrapper {
   display: flex;

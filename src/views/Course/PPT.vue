@@ -1,15 +1,19 @@
 <template>
-  <div class="course_ppt_wrapper" v-loading="loading">
+  <div class="course_ppt_wrapper" style="height: 690px;" v-loading="loading">
     <div class="ai_talk">
       <p class="AI_avatar">
-        <img src="@/assets/svg/chat.svg" alt="">
+        <img src="@/assets/svg/chat3.png" alt="">
       </p>
       <span>根据课程内容生成PPT如下，如需调整，可直接点击内容直接调整</span>
     </div>
     <div class="content_wrapper">
       <div class="content_con">
         <h3 class="outline_head">内容</h3>
-        <!-- <el-input 
+        <div class="tags" style="float: right;">
+          <el-button type="success" size="large" plain>下载</el-button>
+        </div>
+
+        <!-- <el-input
               v-model="textarea" 
               type="textarea" 
               placeholder="Please input content" /> -->
@@ -21,6 +25,9 @@
       </div>
       <div class="outline_content">
         <h3 class="outline_head">PPT</h3>
+        <div class="tags" style="float: right;">
+          <el-button type="success" size="large" plain>下载</el-button>
+        </div>
         <div class="ppt_wrap" v-loading="pptLoading">
           <!-- <div class="demo-image__lazy">
             <el-image 
@@ -68,7 +75,7 @@ const handleTextInp = (e) => {
   timer =  setTimeout(() => {
     pptLoading.value = false
     iframeSrc.value = "https://kdocs.cn/l/cre5lWiwYmRv"
-    store.pptSrc = iframeSrc.value 
+    store.pptSrc = iframeSrc.value
     clearTimeout(timer)
     timer = null
   }, 3000)
@@ -84,6 +91,10 @@ const next = () => {
 </script>
 
 <style scoped>
+.tags {
+  display: flex;
+  margin-bottom: 20px;
+}
 .submit_btn_ppt {
   width: 250px;
   line-height: 40px;
@@ -108,13 +119,15 @@ const next = () => {
   height: 40px;
   border-radius: 50%;
   color: #fff;
-  background: rgb(111, 219, 175);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
 }
-
+.AI_avatar img {
+  width: 40px
+}
 .content_wrapper {
   display: flex;
   padding-left: 40px;
@@ -147,7 +160,7 @@ article>p:not(.content_tit) {
 }
 .content_con textarea {
   width: 100%;
-  height: 400px;
+  height: 500px;
   padding: 10px;
   color: #333;
   border: 1px solid #aaa;
@@ -171,7 +184,7 @@ article>p:not(.content_tit) {
 
 .ppt_wrap {
   width: 100%;
-  height: 400px;
+  height: 500px;
 }
 .ppt_wrap iframe {
   width: 100%;

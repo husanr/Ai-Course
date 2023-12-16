@@ -9,7 +9,7 @@
         <LayoutHeader />
       </el-header>
       <el-container>
-        <el-aside :width="sideWidth">
+        <el-aside  :width="sideWidth" >
           <Menu />
         </el-aside>
         <el-container>
@@ -30,7 +30,7 @@ import LayoutHeader from "@/components/header/index.vue"
 import { store } from "./store";
 
 const sideWidth = computed(() => {
-  return store.collapse ? "80px" : "120px"
+  return store.collapse ? "80px" : "200px"
 })
 </script>
 <style>
@@ -38,11 +38,8 @@ const sideWidth = computed(() => {
   width: 100%;
   height: 100%;
   padding: 20px;
-  /* background: radial-gradient(circle,#EBF5F4,#C1F5E6); */
-  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
-  /* background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%); */
-  /* background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%); */
-    /* background: white; */
+  /* background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%); */
+  background-image: linear-gradient(-225deg, #375FE6 0%, #df32bc 100%);
   /* border-radius: 50px; */
   box-sizing: border-box;
 }
@@ -62,8 +59,17 @@ const sideWidth = computed(() => {
   justify-content: center;
   align-items: center; */
 }
+#el-id {
+  border-right: solid 1px var(--el-menu-border-color);
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding-left: 0;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
 .el-aside {
   overflow: hidden !important;
 }
-
 </style>

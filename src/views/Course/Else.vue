@@ -1,8 +1,8 @@
 <template>
-  <div class="course_else_wrapper">
+  <div class="course_else_wrapper" style="height: 690px;">
     <div class="ai_talk">
       <p class="AI_avatar">
-        <img src="@/assets/svg/chat.svg" alt="">
+        <img src="@/assets/svg/chat3.png" alt="">
       </p>
       <span>您可选择您需要的其他内容：</span>
     </div>
@@ -57,11 +57,14 @@ const imgDialogVisible = ref(false)
   height: 40px;
   border-radius: 50%;
   color: #fff;
-  background: rgb(111, 219, 175);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+}
+.AI_avatar img {
+  width: 40px
 }
 .btns {
   display: flex;

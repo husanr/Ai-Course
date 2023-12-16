@@ -7,7 +7,7 @@
                     :class="store.activeIndex === index ? 'active_li' : ''"
                     @click="handleClickTab(item,index)"
                   >
-                  <p :to="item.path">{{item.name}}</p>
+                  <p :to="item.path"><h4>{{item.name}}</h4></p>
                 </li>
             </ul>
         </div>
@@ -66,15 +66,19 @@ const handleClickTab = (item, ind) => {
 .link_btns ul li {
   list-style: none;
   background-color: transparent;
+  color: #fff;
+  font-size: 18px;
   padding: 10px 30px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 .link_btns ul .active_li {
-  color: #fff;
+  color: #000000;
   background: rgb(105, 195, 223);
 }
 .box-card {
     flex: 1;
+    /* background-color: #eff2ff; */
+    background-image: linear-gradient(-225deg, #eff2ff 0%, #ffe9fb 100%);
 }
 </style>

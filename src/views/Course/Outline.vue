@@ -2,12 +2,13 @@
   <div class="course_outline_wrapper" v-loading="loading">
     <div class="ai_talk">
       <p class="AI_avatar">
-        <img src="@/assets/svg/chat.svg" alt="">
+        <img src="@/assets/svg/chat3.png" alt="">
       </p>
       <span>根据你提供的信息，我们推荐课程大纲如下，如需调整，可直接点击文稿调整</span>
     </div>
     <div class="outline_content">
       <!-- <h3 class="outline_head">大纲</h3> -->
+      <div><TextTree textType='outline'></TextTree></div>
       <article @click="handleClickEdit" v-show="!isEdit" id="show_outline" style="display:none">
         <ul class="outline_ul">
           <li v-for="item in outlineTxtArr" :class="isTit(item) ? 'content_tit' : ''">{{ item }}</li>
@@ -16,7 +17,7 @@
       <div id="output"></div>
       <div class="edit_wrapper" v-show="isEdit">
         <!-- <el-input type="textarea" v-model="textarea" autosize="true" @input="handleTextInp" /> -->
-        <textarea 
+        <textarea
             v-model="textarea"
             placeholder="Please input content"
             @input="handleTextInp"
@@ -32,6 +33,7 @@
 import { ref, reactive, computed, onMounted } from "vue"
 import router from "@/router";
 import {store} from "@/store"
+import TextTree from '@/components/content/TextTree.vue'
 
 // 关联修改前和修改后
 // const textarea = ref("第一章：课题1\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3\n\n第二章：课题2\n\t第一节：节目1\n\t第二节：节目2\n\t第三节：节目3")
@@ -108,11 +110,15 @@ onMounted(() => {
   height: 40px;
   border-radius: 50%;
   color: #fff;
-  background: rgb(111, 219, 175);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+}
+
+.AI_avatar img {
+  width: 40px
 }
 
 .outline_content {
@@ -173,5 +179,13 @@ article {
 }
 #generateContent {
   display: none;
+}
+.custom-tree-node {
+  flex: 0.2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-right: 8px;
 }
 </style>

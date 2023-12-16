@@ -1,5 +1,5 @@
 <template>
-  <div class="course_lecture_wrapper" v-loading="loading">
+  <div class="course_lecture_wrapper" style="height: 690px;" v-loading="loading">
     <div class="ai_talk">
       <p class="AI_avatar">
         <img src="@/assets/svg/chat.svg" alt="">
@@ -9,6 +9,9 @@
     <div class="content_wrapper">
       <div class="outline_content">
         <h3 class="outline_head">PPT</h3>
+        <div class="tags" style="float: right;">
+          <el-button type="success" size="large" plain>下载</el-button>
+        </div>
         <div class="ppt_wrap">
           <!-- <div class="demo-image__lazy">
             <el-image 
@@ -24,6 +27,9 @@
       </div>
       <div class="content_con">
         <h3 class="outline_head">讲稿</h3>
+        <div class="tags" style="float: right;">
+          <el-button type="success" size="large" plain>下载</el-button>
+        </div>
         <div class="lecture_text" @click="handleClickLecture" v-show="!isEdit">
           <article>
             <ul class="outline_ul">
@@ -141,7 +147,7 @@ article {
   border-radius: 10px;
   margin-bottom: 20px;
   line-height: 30px;
-  height: 400px;
+  height: 500px;
   box-sizing: border-box;
   overflow: auto;
 }
