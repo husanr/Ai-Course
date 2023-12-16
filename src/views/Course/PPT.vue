@@ -38,6 +38,7 @@
                 lazy />
           </div> -->
           <iframe ref="pptIframeRef" :src="iframeSrc" frameborder="0"></iframe>
+          <button class="submit_btn_ppt" @click="recreate">重新生成</button>
         </div>
         
       </div>
@@ -70,6 +71,11 @@ const urls = [
 
 const handleTextInp = (e) => {
   store.contentText = e.target.value
+  
+}
+
+// 重新生成
+const recreate = () => {
   pptLoading.value = true
   if(timer)return//防止重复添加定时器
   timer =  setTimeout(() => {

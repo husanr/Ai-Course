@@ -9,8 +9,8 @@
     <div class="content_wrapper">
       <div class="content_con">
         <h3 class="outline_head">讲稿</h3>
-        <div class="lecture_text" @click="handleClickLecture" v-show="!isEdit">
-          <article>
+        <div class="lecture_text" v-show="!isEdit">
+          <article  @click="handleClickLecture">
             <ul class="outline_ul">
               <li v-for="item in lectureTxtArr" :class="isTit(item) ? 'content_tit' : ''">{{ item }}</li>
             </ul>
