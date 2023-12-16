@@ -97,7 +97,7 @@ const next = () => {
   setTimeout(() => {
     store.activeIndex += 1
     router.push('/course/video')
-  }, 2000)
+  }, 5000)
 }
 </script>
 
