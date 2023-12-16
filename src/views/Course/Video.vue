@@ -82,7 +82,7 @@
       </div>
       <div class="video_wrapper">
         <h3 class="outline_head">视频</h3>
-        <div class="video_box">
+        <div class="video_box" v-loading="videoLoading">
           <video src="@/assets/images/v1.mp4" controls :hidden="isHidden"></video>
         </div>
       </div>
@@ -144,9 +144,16 @@ const handleOver = () => {
 }
 
 const loading = ref(false)
+const videoLoading = ref(false)
 const next = () => {
-  /*loading.value = true*/
-  isHidden.value=false
+  // 视频加载loading
+  videoLoading.value = true
+  setTimeout(() => {
+    videoLoading.value = false
+    isHidden.value=false
+  }, 8000)
+
+/*loading.value = true*/
 /*  setTimeout(() => {
     store.activeIndex += 1
     router.push('/course/else')
@@ -240,9 +247,13 @@ article>p:not(.content_tit) {
   flex: 1;
   margin-left: 30px;
 }
+.video_box {
+  width: 100%;
+  height: 320px;
+}
 .video_box video{
   /* width: 90%; */
-  height: 320px;
+  height: 100%;
   border-radius: 20px;
 }
 
