@@ -9,7 +9,7 @@
         <LayoutHeader />
       </el-header>
       <el-container>
-        <el-aside width="120px" :isCollapse="isCollapse">
+        <el-aside :width="sideWidth">
           <Menu />
         </el-aside>
         <el-container>
@@ -27,10 +27,11 @@ import { ref, computed } from "vue"
 import { RouterLink, RouterView } from 'vue-router'
 import Menu from "@/components/aside/menu.vue"
 import LayoutHeader from "@/components/header/index.vue"
+import { store } from "./store";
 
-const isCollapse = ref(false)
-const wid = isCollapse.value ? "100px" : "120px"
-const asideWidth = ref(wid)
+const sideWidth = computed(() => {
+  return store.collapse ? "80px" : "120px"
+})
 </script>
 <style>
 .common-layout {
@@ -61,8 +62,8 @@ const asideWidth = ref(wid)
   justify-content: center;
   align-items: center; */
 }
-.el-aside{
-  overflow: hidden;
+.el-aside {
+  overflow: hidden !important;
 }
 
 </style>

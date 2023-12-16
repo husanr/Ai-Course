@@ -183,6 +183,7 @@ article>p:not(.content_tit) {
 
 .video_wrapper {
   flex: 1;
+  margin-left: 30px;
 }
 .video_box video{
   /* width: 90%; */

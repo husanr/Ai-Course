@@ -63,6 +63,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { store } from "@/store"
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const loading = ref(false)
@@ -72,12 +73,11 @@ const input3 = ref('')
 const input4 = ref('')
 const input5 = ref('')
 const input6 = ref('')
-sessionStorage.setItem('isCollapse', false)
 const handleCreateOutline = () => {
-  sessionStorage.setItem('isCollapse', true)
   loading.value = true
   // 模拟加载中的状态 2s
   setTimeout(() => {
+    store.collapse = true
     router.push('/course')
   }, 2000)
 }
